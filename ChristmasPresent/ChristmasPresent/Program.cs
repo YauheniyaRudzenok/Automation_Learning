@@ -23,7 +23,7 @@ namespace ChristmasPresent
 			return boxWeight;
 		}
 
-		public void SearchCandy(string name="none", string type="none", int weight=0)
+		public void ExtendetSearchCandy(string name="", string type="", int weight=0)
 		{
 			for (int i = 0; i < insideBox.Count; i++)
 			{
@@ -42,10 +42,61 @@ namespace ChristmasPresent
 			}
 		}
 
-		public void SortCandies()
+		public void RestrictedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
-			Console.WriteLine(insideBox.OrderBy(u => insideBox[u].Name));
+			for (int i = 0; i < insideBox.Count; i++)
+			{
+				if (name == "")
+				{
+					if (insideBox[i].Type == type && insideBox[i].Weight == weight)
+					{
+						insideBox[i].GetInfo();
+					}
+					else if (weight == 0 && insideBox[i].Type == type)
+					{
+						insideBox[i].GetInfo();
+					}
+					else if (insideBox[i].Weight == weight && type == "")
+					{
+						insideBox[i].GetInfo();
+					}
+				}
+				else if (type == "")
+				{
+					if (insideBox[i].Name == name && insideBox[i].Weight == weight)
+					{
+						insideBox[i].GetInfo();
+					}
+					else if (weight == 0 && insideBox[i].Name == name)
+					{
+						insideBox[i].GetInfo();
+					}
+				}
+				else if (weight == 0)
+				{
+					if (insideBox[i].Name == name && insideBox[i].Type == type)
+					{
+						insideBox[i].GetInfo();
+					}
+				}
+				else if (name == "" && type=="" && weight == 0)
+				{
+					Console.WriteLine("No search parameters are inputted");
+				}
+				else
+				{
+					if (insideBox[i].Name == name && insideBox[i].Type==type && insideBox[i].Weight==weight)
+					{
+						insideBox[i].GetInfo();
+					}
+				}
+			}
 		}
+
+		//public void SortCandies()
+		//{
+		//	Console.WriteLine(insideBox.OrderBy(u => insideBox[u].Name));
+		//}
 	}
 	interface ICandies
 	{
@@ -117,12 +168,17 @@ namespace ChristmasPresent
 			candy3.Weight = 90;
 			candy3.Filling = "Berries jam";
 
+			ChocolateCandiesWithFilling candy4 = new ChocolateCandiesWithFilling();
+			candy1.Name = "Taddy";
+			candy1.Weight = 90;
+
 			Box box1 = new Box();
 			box1.AddCandy(candy1);
 			box1.AddCandy(candy3);
 			box1.DefineWeight();
-			box1.SortCandies();
-			//box1.SearchCandy("Taddy", "", 90);
+			//box1.SortCandies();
+			//box1.ExtendetSearchCandy("Taddy", "", 90);
+			box1.RestrictedSearchCandy("Taddy", "", 90);
 		}
 	}
 }
