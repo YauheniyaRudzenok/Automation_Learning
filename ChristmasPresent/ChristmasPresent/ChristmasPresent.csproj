@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Box.cs" />
+    <Compile Include="Candies.cs" />
+    <Compile Include="ChocolateCandies.cs" />
+    <Compile Include="ChocolateCandiesWithFilling.cs" />
+    <Compile Include="Caramel.cs" />
+    <Compile Include="LollyPops.cs" />
+    <Compile Include="ICandies.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
