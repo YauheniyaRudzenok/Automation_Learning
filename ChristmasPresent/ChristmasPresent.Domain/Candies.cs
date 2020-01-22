@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ChristmasPresent
+namespace ChristmasPresent.Domain
 {
-	abstract class Candies : ICandies
+	public abstract class Candies : ICandies
 	{
 		public string Name { get; set; }
 		public int Weight { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using ChristmasPresent.Domain;
 
 namespace ChristmasPresent
 {
@@ -29,10 +30,13 @@ namespace ChristmasPresent
 			box1.AddCandy(candy1);
 			box1.AddCandy(candy3);
             Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
-            Console.WriteLine($"Candies list sorted by name: {box1.SortCandies()}");
-
             box1.ExtendetSearchCandy("Taddy", "", 90);
 			box1.RestrictedSearchCandy("Taddy", "", 90);
+
+            for (int i = 0; i < box1.SortCandies().Count; i++)
+            {
+                Console.WriteLine($"Items sorted by Name: {i}:{box1.SortCandies()[i].Name}");
+            }
 		}
 	}
 }

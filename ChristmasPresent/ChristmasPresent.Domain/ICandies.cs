@@ -1,4 +1,4 @@
-﻿namespace ChristmasPresent
+﻿namespace ChristmasPresent.Domain
 {
 	interface ICandies
 	{

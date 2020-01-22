@@ -1,6 +1,6 @@
-﻿namespace ChristmasPresent
+﻿namespace ChristmasPresent.Domain
 {
-	class Caramel : Candies
+	public class Caramel : Candies
 	{
 		public Caramel()
 		{

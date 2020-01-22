@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ChristmasPresent
+namespace ChristmasPresent.Domain
 {
-	internal class Box
+	public class Box
 	{
 		private List<Candies> insideBox = new List<Candies>();
 
-		public void AddCandy(Candies candyItem)
+        public void AddCandy(Candies candyItem)
 		{
 			insideBox.Add(candyItem);
         }
@@ -83,9 +83,9 @@ namespace ChristmasPresent
 		public List <Candies> SortCandies()
 		{
 
-			insideBox.OrderBy(u => u.Name).ToList();
+			List<Candies> sortedItems= insideBox.OrderBy(u => u.Name).ToList();
 
-            return insideBox;
+            return sortedItems;
 
         }
 	}
