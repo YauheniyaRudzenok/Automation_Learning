@@ -28,9 +28,10 @@ namespace ChristmasPresent
 			Box box1 = new Box();
 			box1.AddCandy(candy1);
 			box1.AddCandy(candy3);
-			box1.DefineWeight();
-			box1.SortCandies();
-			box1.ExtendetSearchCandy("Taddy", "", 90);
+            Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
+            Console.WriteLine($"Candies list sorted by name: {box1.SortCandies()}");
+
+            box1.ExtendetSearchCandy("Taddy", "", 90);
 			box1.RestrictedSearchCandy("Taddy", "", 90);
 		}
 	}

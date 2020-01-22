@@ -4,20 +4,19 @@ using System.Linq;
 
 namespace ChristmasPresent
 {
-	class Box
+	internal class Box
 	{
-		List<Candies> insideBox = new List<Candies>();
-		List<Candies> sortedItems = new List<Candies>();
-		private int boxWeight;
+		private List<Candies> insideBox = new List<Candies>();
 
 		public void AddCandy(Candies candyItem)
 		{
 			insideBox.Add(candyItem);
-		}
+        }
 
-		// rewrite
 		public int DefineWeight()
 		{
+            int boxWeight = 0;
+
 			for (int i = 0; i < insideBox.Count; i++)
 			{
 				boxWeight = boxWeight + insideBox[i].Weight;
@@ -31,16 +30,7 @@ namespace ChristmasPresent
 		{
 			for (int i = 0; i < insideBox.Count; i++)
 			{
-				// 1 if
-				if (insideBox[i].Name == name)
-				{
-					insideBox[i].GetInfo();
-				}
-				else if (insideBox[i].Type == type)
-				{
-					insideBox[i].GetInfo();
-				}
-				else if (insideBox[i].Weight == weight)
+				if (insideBox[i].Name == name||insideBox[i].Type == type ||insideBox[i].Weight == weight)
 				{
 					insideBox[i].GetInfo();
 				}
@@ -54,27 +44,17 @@ namespace ChristmasPresent
 			{
 				if (name == "")
 				{
-					// if
-					if (insideBox[i].Type == type && insideBox[i].Weight == weight)
-					{
-						insideBox[i].GetInfo();
-					}
-					else if (weight == 0 && insideBox[i].Type == type)
-					{
-						insideBox[i].GetInfo();
-					}
-					else if (insideBox[i].Weight == weight && type == "")
+					if (insideBox[i].Type == type && insideBox[i].Weight == weight||
+                        weight == 0 && insideBox[i].Type == type||
+                        insideBox[i].Weight == weight && type == "")
 					{
 						insideBox[i].GetInfo();
 					}
 				}
 				else if (type == "")
 				{
-					if (insideBox[i].Name == name && insideBox[i].Weight == weight)
-					{
-						insideBox[i].GetInfo();
-					}
-					else if (weight == 0 && insideBox[i].Name == name)
+					if (insideBox[i].Name == name && insideBox[i].Weight == weight||
+                        weight == 0 && insideBox[i].Name == name)
 					{
 						insideBox[i].GetInfo();
 					}
@@ -100,14 +80,13 @@ namespace ChristmasPresent
 			}
 		}
 
-		public void SortCandies()
+		public List <Candies> SortCandies()
 		{
-			sortedItems=insideBox.OrderBy(u => u.Name).ToList();
 
-			for (int i = 0; i < insideBox.Count; i++)
-			{
-				Console.WriteLine(sortedItems[i].Name);
-			}
-		}
+			insideBox.OrderBy(u => u.Name).ToList();
+
+            return insideBox;
+
+        }
 	}
 }
