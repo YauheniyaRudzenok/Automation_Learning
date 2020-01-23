@@ -9,6 +9,7 @@ namespace ChristmasPresent
 	{
 		static void Main()
 		{
+			// параметризованный конструктор
 			ChocolateCandies candy1 = new ChocolateCandies();
 			candy1.Name = "Taddy";
 			candy1.Weight = 56;
@@ -23,19 +24,24 @@ namespace ChristmasPresent
 			candy3.Filling = "Berries jam";
 
 			ChocolateCandiesWithFilling candy4 = new ChocolateCandiesWithFilling();
-			candy1.Name = "Taddy";
-			candy1.Weight = 90;
+			candy4.Name = "Daddy jam";
+			candy4.Weight = 90;
 
 			Box box1 = new Box();
 			box1.AddCandy(candy1);
+			box1.AddCandy(candy2);
 			box1.AddCandy(candy3);
-            Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
+			box1.AddCandy(candy4);
+
+			Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
             box1.ExtendetSearchCandy("Taddy", "", 90);
 			box1.RestrictedSearchCandy("Taddy", "", 90);
 
-            for (int i = 0; i < box1.SortCandies().Count; i++)
+			List<Candies> sortedCandies = box1.SortCandies();
+
+			for (int i = 0; i < sortedCandies.Count; i++)
             {
-                Console.WriteLine($"Items sorted by Name: {i}:{box1.SortCandies()[i].Name}");
+                Console.WriteLine($"Items sorted by Name: {i}:{sortedCandies[i].Name}");
             }
 		}
 	}

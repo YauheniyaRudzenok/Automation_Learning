@@ -17,6 +17,8 @@ namespace ChristmasPresent.Domain
 		{
             int boxWeight = 0;
 
+			// foreach
+
 			for (int i = 0; i < insideBox.Count; i++)
 			{
 				boxWeight = boxWeight + insideBox[i].Weight;
@@ -26,27 +28,34 @@ namespace ChristmasPresent.Domain
 			return boxWeight;
 		}
 
+		// вернуть список
 		public void ExtendetSearchCandy(string name = "", string type = "", int weight = 0)
 		{
 			for (int i = 0; i < insideBox.Count; i++)
 			{
-				if (insideBox[i].Name == name||insideBox[i].Type == type ||insideBox[i].Weight == weight)
+				if (insideBox[i].Name == name || 
+					insideBox[i].Type == type || 
+					insideBox[i].Weight == weight)
 				{
 					insideBox[i].GetInfo();
 				}
 			}
 		}
 
+		// вернуть список
 		public void RestrictedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
+			// проверка введенных данных
+
 			// Where();
 			for (int i = 0; i < insideBox.Count; i++)
 			{
-				if (name == "")
+				if (string.IsNullOrWhiteSpace(name))
 				{
-					if (insideBox[i].Type == type && insideBox[i].Weight == weight||
-                        weight == 0 && insideBox[i].Type == type||
-                        insideBox[i].Weight == weight && type == "")
+					// braces
+					if ((insideBox[i].Type == type && insideBox[i].Weight == weight) ||
+                        (weight == 0 && insideBox[i].Type == type) ||
+                        (insideBox[i].Weight == weight && type == ""))
 					{
 						insideBox[i].GetInfo();
 					}
@@ -80,13 +89,9 @@ namespace ChristmasPresent.Domain
 			}
 		}
 
-		public List <Candies> SortCandies()
+		public List<Candies> SortCandies()
 		{
-
-			List<Candies> sortedItems= insideBox.OrderBy(u => u.Name).ToList();
-
-            return sortedItems;
-
-        }
+			return insideBox.OrderBy(u => u.Name).ToList();
+		}
 	}
 }
