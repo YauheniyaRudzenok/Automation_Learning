@@ -5,7 +5,7 @@ using ChristmasPresent.Domain;
 
 namespace ChristmasPresent
 {
-	class CandiesList
+	public class CandiesList
 	{
 		static void Main()
 		{

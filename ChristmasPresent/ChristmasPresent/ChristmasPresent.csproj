@@ -43,18 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Box.cs" />
-    <Compile Include="Candies.cs" />
-    <Compile Include="ChocolateCandies.cs" />
-    <Compile Include="ChocolateCandiesWithFilling.cs" />
-    <Compile Include="Caramel.cs" />
-    <Compile Include="LollyPops.cs" />
-    <Compile Include="ICandies.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChristmasPresent.Domain\ChristmasPresent.Domain.csproj">
+      <Project>{793aa9ba-318a-4f1a-8854-508ebaa2afa7}</Project>
+      <Name>ChristmasPresent.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
