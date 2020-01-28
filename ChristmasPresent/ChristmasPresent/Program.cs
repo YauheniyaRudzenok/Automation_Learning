@@ -9,7 +9,6 @@ namespace ChristmasPresent
 	{
 		static void Main()
 		{
-			// параметризованный конструктор
 			Caramel candy1 = new Caramel("Taddy",56);
 
 			ChocolateCandies candy2 = new ChocolateCandies("New Chocolade Explosure", 78);
