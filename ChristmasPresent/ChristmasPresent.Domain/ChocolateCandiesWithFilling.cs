@@ -2,7 +2,9 @@
 {
 	public class ChocolateCandiesWithFilling : Candies
 	{
-		public ChocolateCandiesWithFilling()
+		private string type;
+		public ChocolateCandiesWithFilling(string name, int weight, string filling)
+			: base(name, weight)
 		{
 			Type = "Chocolate";
 		}

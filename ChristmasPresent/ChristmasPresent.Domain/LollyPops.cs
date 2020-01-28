@@ -2,7 +2,8 @@
 {
 	public class LollyPops : Candies
 	{
-		public LollyPops()
+		public LollyPops(string name, int weight)
+			: base(name, weight)
 		{
 			Type = "Lolly-Pop";
 		}
