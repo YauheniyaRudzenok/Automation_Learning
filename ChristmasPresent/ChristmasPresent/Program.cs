@@ -25,7 +25,6 @@ namespace ChristmasPresent
 			box1.AddCandy(candy4);
 
 			Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
-            box1.ExtendetSearchCandy("Taddy", "", 90);
 			List<Candies> sortedCandies = box1.SortCandies();
 
 			for (int i = 0; i < sortedCandies.Count; i++)
@@ -33,11 +32,19 @@ namespace ChristmasPresent
                 Console.WriteLine($"Items sorted by Name: {i}:{sortedCandies[i].Name}");
             }
 
-            List<Candies> restrictedSearchResult = box1.RestrictedSearchCandy("Taddy", "", 56);;
+            List<Candies> restrictedSearchResult = box1.RestrictedSearchCandy("Taddy", "", 56);
+            Console.Write("Search result is:");
             for (int i=0; i< restrictedSearchResult.Count; i++)
             {
-                Console.Write($"Search result is:{restrictedSearchResult[i].Name}");
+                Console.WriteLine(restrictedSearchResult[i].Name);
             }
-		}
+
+            List<Candies> extendedSearchResult= box1.ExtendedSearchCandy("Taddy", "", 90); ;
+            Console.Write("Search result of extended search is:");
+            for (int i = 0; i < extendedSearchResult.Count; i++)
+            {
+                Console.WriteLine(extendedSearchResult[i].Name);
+            }
+        }
 	}
 }
