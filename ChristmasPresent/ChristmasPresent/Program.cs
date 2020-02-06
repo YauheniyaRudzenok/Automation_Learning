@@ -26,13 +26,17 @@ namespace ChristmasPresent
 
 			Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
             box1.ExtendetSearchCandy("Taddy", "", 90);
-			box1.RestrictedSearchCandy("Taddy", "", 90);
-
 			List<Candies> sortedCandies = box1.SortCandies();
 
 			for (int i = 0; i < sortedCandies.Count; i++)
             {
                 Console.WriteLine($"Items sorted by Name: {i}:{sortedCandies[i].Name}");
+            }
+
+            List<Candies> restrictedSearchResult = box1.RestrictedSearchCandy("Taddy", "", 56);;
+            for (int i=0; i< restrictedSearchResult.Count; i++)
+            {
+                Console.Write($"Search result is:{restrictedSearchResult[i].Name}");
             }
 		}
 	}

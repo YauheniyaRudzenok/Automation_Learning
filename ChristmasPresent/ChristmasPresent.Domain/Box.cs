@@ -42,52 +42,51 @@ namespace ChristmasPresent.Domain
 			}
 		}
 
-		// вернуть список
-		public void RestrictedSearchCandy(string name = "", string type = "", int weight = 0)
+		public List <Candies> RestrictedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
-			// проверка введенных данных
-
-			// Where();
-			for (int i = 0; i < insideBox.Count; i++)
+            List<Candies> restrictedSearchResult = new List<Candies>();
+            // Where();
+            for (int i = 0; i < insideBox.Count; i++)
 			{
-				if (string.IsNullOrWhiteSpace(name))
+                 if (name == "" && type == "" && weight == 0)
+                {
+                    Console.WriteLine("Please specify your search query");
+                }
+                else if (string.IsNullOrWhiteSpace(name))
 				{
-					// braces
 					if ((insideBox[i].Type == type && insideBox[i].Weight == weight) ||
                         (weight == 0 && insideBox[i].Type == type) ||
                         (insideBox[i].Weight == weight && type == ""))
 					{
-						insideBox[i].GetInfo();
-					}
+                        restrictedSearchResult.Add(insideBox[i]);
+                    }
 				}
-				else if (type == "")
+				else if (string.IsNullOrWhiteSpace(type))
 				{
-					if (insideBox[i].Name == name && insideBox[i].Weight == weight||
-                        weight == 0 && insideBox[i].Name == name)
+					if ((insideBox[i].Name == name && insideBox[i].Weight == weight)||
+                        (weight == 0 && insideBox[i].Name == name))
 					{
-						insideBox[i].GetInfo();
-					}
+                        restrictedSearchResult.Add(insideBox[i]);
+                    }
 				}
 				else if (weight == 0)
 				{
 					if (insideBox[i].Name == name && insideBox[i].Type == type)
 					{
-						insideBox[i].GetInfo();
-					}
-				}
-				else if (name == "" && type == "" && weight == 0)
-				{
-					Console.WriteLine("No search parameters are inputted");
+                        restrictedSearchResult.Add(insideBox[i]);
+                    }
 				}
 				else
 				{
 					if (insideBox[i].Name == name && insideBox[i].Type == type && insideBox[i].Weight == weight)
 					{
-						insideBox[i].GetInfo();
-					}
+                        restrictedSearchResult.Add(insideBox[i]);
+                    }
 				}
-			}
-		}
+
+            }
+            return restrictedSearchResult;
+        }
 
 		public List<Candies> SortCandies()
 		{
