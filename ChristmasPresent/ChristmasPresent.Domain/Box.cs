@@ -16,18 +16,16 @@ namespace ChristmasPresent.Domain
 		public int DefineWeight()
 		{
             int boxWeight = 0;
-            int i = 0;
 
-			// foreach
             foreach (Candies item in insideBox)
             {
-                boxWeight += insideBox[i].Weight;
-                i++;
+                boxWeight += item.Weight;
             }
+
 			return boxWeight;
 		}
 
-		public List <Candies> ExtendedSearchCandy(string name = "", string type = "", int weight = 0)
+		public List<Candies> ExtendedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
             List<Candies> extendetSearchResult = new List<Candies>();
             for (int i = 0; i < insideBox.Count; i++)
@@ -48,7 +46,8 @@ namespace ChristmasPresent.Domain
             // Where();
             for (int i = 0; i < insideBox.Count; i++)
 			{
-                 if (name == "" && type == "" && weight == 0)
+				// Перенести проверку в начало метода и вернуть пустой список
+                if (name == "" && type == "" && weight == 0)
                 {
                     Console.WriteLine("Please specify your search query");
                 }
