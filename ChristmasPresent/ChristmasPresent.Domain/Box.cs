@@ -47,45 +47,43 @@ namespace ChristmasPresent.Domain
 			{
 				return result;
 			}
-			else {
-				foreach (Candies item in insideBox)
+
+			foreach (Candies item in insideBox)
+			{
+				if (string.IsNullOrWhiteSpace(name))
 				{
-					if (string.IsNullOrWhiteSpace(name))
+					if ((item.Type == type && item.Weight == weight) ||
+						(weight == 0 && item.Type == type) ||
+						(item.Weight == weight && type == ""))
 					{
-						if ((item.Type == type && item.Weight == weight) ||
-							(weight == 0 && item.Type == type) ||
-							(item.Weight == weight && type == ""))
-						{
-							result.Add(item);
-						}
-					}
-					else if (string.IsNullOrWhiteSpace(type))
-					{
-						if ((item.Name == name && item.Weight == weight) ||
-							(weight == 0 && item.Name == name))
-						{
-							result.Add(item);
-						}
-					}
-					else if (weight == 0)
-					{
-						if (item.Name == name && item.Type == type)
-						{
-							result.Add(item);
-						}
-					}
-					else
-					{
-						if (item.Name == name && item.Type == type && item.Weight == weight)
-						{
-							result.Add(item);
-						}
+						result.Add(item);
 					}
 				}
-			
+				else if (string.IsNullOrWhiteSpace(type))
+				{
+					if ((item.Name == name && item.Weight == weight) ||
+						(weight == 0 && item.Name == name))
+					{
+						result.Add(item);
+					}
+				}
+				else if (weight == 0)
+				{
+					if (item.Name == name && item.Type == type)
+					{
+						result.Add(item);
+					}
+				}
+				else
+				{
+					if (item.Name == name && item.Type == type && item.Weight == weight)
+					{
+						result.Add(item);
+					}
+				}
+			}
 
-            }
-            return result;
+			return result;
         }
 
 		public List<Candies> SortCandies()

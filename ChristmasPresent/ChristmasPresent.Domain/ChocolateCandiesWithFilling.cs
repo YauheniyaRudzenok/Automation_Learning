@@ -4,9 +4,8 @@
 	{
 		private string type;
 		public ChocolateCandiesWithFilling(string name, int weight, string filling)
-			: base(name, weight)
+			: base(name, weight, "Chocolate")
 		{
-			Type = "Chocolate";
 		}
 	}
 }

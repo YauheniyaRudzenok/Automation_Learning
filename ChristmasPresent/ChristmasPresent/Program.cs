@@ -31,7 +31,7 @@ namespace ChristmasPresent
 			List<Candies> sortedCandies = box1.SortCandies();
 
 			Console.WriteLine("Items sorted by Name:");
-			foreach (Candies item in  sortedCandies)
+			foreach (Candies item in sortedCandies)
             {
                 Console.WriteLine(item.Name);
             }

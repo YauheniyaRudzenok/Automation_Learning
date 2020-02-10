@@ -3,9 +3,8 @@
 	public class Caramel : Candies
 	{
 		public Caramel(string name, int weight)
-			: base(name, weight)
+			: base(name, weight, "Caramel")
 		{
-			Type = "Caramel";
 			Filling = "Jam";
 		}
 	}
