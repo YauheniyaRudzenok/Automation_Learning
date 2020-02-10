@@ -3,8 +3,8 @@
 	interface ICandies
 	{
 		string Name { get; set; }
-		int Weight { get; set; }
-		string Type { get; set; }
+		int Weight { get; }
+		string Type { get; }
 		string Filling { get; set; }
 	}
 }

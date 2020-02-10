@@ -10,8 +10,8 @@ namespace ChristmasPresent.Domain
 			Weight = weight;
 		}
 		public string Name { get; set; }
-		public int Weight { get; set; }
-		public string Type { get; set; }
+		public int Weight { get; private set; }
+		public string Type { get; protected set; }
 		public string Filling { get; set; }
 
 		public void GetInfo()

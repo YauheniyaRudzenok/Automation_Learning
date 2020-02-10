@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace ChristmasPresent.Domain
@@ -27,64 +26,66 @@ namespace ChristmasPresent.Domain
 
 		public List<Candies> ExtendedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
-            List<Candies> extendetSearchResult = new List<Candies>();
-            for (int i = 0; i < insideBox.Count; i++)
+            List<Candies> result = new List<Candies>();
+            foreach (Candies item in insideBox)
 			{
-				if (insideBox[i].Name == name || 
-					insideBox[i].Type == type || 
-					insideBox[i].Weight == weight)
+				if (item.Name == name || 
+					item.Type == type || 
+					item.Weight == weight)
 				{
-                    extendetSearchResult.Add(insideBox[i]);
+                    result.Add(item);
 				}
 			}
-            return extendetSearchResult;
+            return result;
         }
 
 		public List <Candies> RestrictedSearchCandy(string name = "", string type = "", int weight = 0)
 		{
-            List<Candies> restrictedSearchResult = new List<Candies>();
-            // Where();
-            for (int i = 0; i < insideBox.Count; i++)
+            List<Candies> result = new List<Candies>();
+			// Where();
+			if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(type) && weight == 0)
 			{
-				// Перенести проверку в начало метода и вернуть пустой список
-                if (name == "" && type == "" && weight == 0)
-                {
-                    Console.WriteLine("Please specify your search query");
-                }
-                else if (string.IsNullOrWhiteSpace(name))
+				return result;
+			}
+			else {
+				foreach (Candies item in insideBox)
 				{
-					if ((insideBox[i].Type == type && insideBox[i].Weight == weight) ||
-                        (weight == 0 && insideBox[i].Type == type) ||
-                        (insideBox[i].Weight == weight && type == ""))
+					if (string.IsNullOrWhiteSpace(name))
 					{
-                        restrictedSearchResult.Add(insideBox[i]);
-                    }
-				}
-				else if (string.IsNullOrWhiteSpace(type))
-				{
-					if ((insideBox[i].Name == name && insideBox[i].Weight == weight)||
-                        (weight == 0 && insideBox[i].Name == name))
+						if ((item.Type == type && item.Weight == weight) ||
+							(weight == 0 && item.Type == type) ||
+							(item.Weight == weight && type == ""))
+						{
+							result.Add(item);
+						}
+					}
+					else if (string.IsNullOrWhiteSpace(type))
 					{
-                        restrictedSearchResult.Add(insideBox[i]);
-                    }
-				}
-				else if (weight == 0)
-				{
-					if (insideBox[i].Name == name && insideBox[i].Type == type)
+						if ((item.Name == name && item.Weight == weight) ||
+							(weight == 0 && item.Name == name))
+						{
+							result.Add(item);
+						}
+					}
+					else if (weight == 0)
 					{
-                        restrictedSearchResult.Add(insideBox[i]);
-                    }
-				}
-				else
-				{
-					if (insideBox[i].Name == name && insideBox[i].Type == type && insideBox[i].Weight == weight)
+						if (item.Name == name && item.Type == type)
+						{
+							result.Add(item);
+						}
+					}
+					else
 					{
-                        restrictedSearchResult.Add(insideBox[i]);
-                    }
+						if (item.Name == name && item.Type == type && item.Weight == weight)
+						{
+							result.Add(item);
+						}
+					}
 				}
+			
 
             }
-            return restrictedSearchResult;
+            return result;
         }
 
 		public List<Candies> SortCandies()
