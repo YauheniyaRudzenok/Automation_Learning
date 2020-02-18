@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ChristmasPresent.Domain
@@ -9,7 +10,21 @@ namespace ChristmasPresent.Domain
 
         public void AddCandy(Candies candyItem)
 		{
-			insideBox.Add(candyItem);
+            try
+            {
+                if (candyItem == null)
+                {
+                    throw new Exception("ERROR: The object is empty. Please specify candys parameters");
+                }
+                else
+                {
+                    insideBox.Add(candyItem);
+                }
+            }
+            catch(Exception emptyItem)
+            {
+                Console.WriteLine(emptyItem.Message);
+            }
         }
 
 		public int DefineWeight()
@@ -90,5 +105,25 @@ namespace ChristmasPresent.Domain
 		{
 			return insideBox.OrderBy(u => u.Name).ToList();
 		}
-	}
+
+        public void DeleteCandy(Candies candyItem)
+        {
+            try
+            {
+                if (insideBox.Contains(candyItem))
+                {
+                    insideBox.Remove(candyItem);
+                }
+                else
+                {
+                    throw new Exception("Item is absent in the box");
+                }
+            }
+            catch (Exception absentItem)
+            {
+                Console.WriteLine($"ERROR:{absentItem.Message}");
+            }
+
+        }
+    }
 }

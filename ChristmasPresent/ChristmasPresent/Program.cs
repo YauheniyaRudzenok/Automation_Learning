@@ -12,22 +12,36 @@ namespace ChristmasPresent
 	{
 		static void Main()
 		{
-			Caramel candy1 = new Caramel("Taddy", 56);
+            Box box1 = new Box();
+            Caramel candy1 = new Caramel("Taddy", 56);
 
-			ChocolateCandies candy2 = new ChocolateCandies("New Chocolade Explosure", 78);
+			//ChocolateCandies candy2 = new ChocolateCandies("New Chocolade Explosure", 78);
+            try
+            {
+                ChocolateCandiesWithFilling candy3 =
+                new ChocolateCandiesWithFilling("Chocolate with berries", 90, "Berries jam");
+            }
+            catch (IncorrectValueException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+            finally
+            {
+                ChocolateCandiesWithFilling candy3 =
+                new ChocolateCandiesWithFilling("Chocolate with berries", 90, "Berries jam");
+                box1.AddCandy(candy3);
+            }
 
-			ChocolateCandiesWithFilling candy3 = 
-				new ChocolateCandiesWithFilling("Chocolate with berries", 90, "Berries jam");
+			//LollyPops candy4 = new LollyPops("Chupa-chups", 15);
+            LollyPops candy5 = null;
 
-			LollyPops candy4 = new LollyPops("Chupa-chups", 15);
-
-			Box box1 = new Box();
+			
 			box1.AddCandy(candy1);
-			box1.AddCandy(candy2);
-			box1.AddCandy(candy3);
-			box1.AddCandy(candy4);
+			//box1.AddCandy(candy2);
+           // box1.AddCandy(candy4);
+            box1.AddCandy(candy5);
 
-			Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
+            Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
 			List<Candies> sortedCandies = box1.SortCandies();
 
 			Console.WriteLine("Items sorted by Name:");
