@@ -93,10 +93,10 @@ namespace ChristmasPresent.Domain
 			return result;
         }
 
-		public List<Candies> SortCandies()
-		{
-			return insideBox.OrderBy(u => u.Name).ToList();
-		}
+        public List<Candies> SortCandies()
+        {
+            return insideBox.OrderBy(u => u.Name).ToList();
+        }
 
         public void DeleteCandy(Candies candyItem)
         {

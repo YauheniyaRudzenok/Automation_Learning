@@ -4,20 +4,23 @@ namespace ChristmasPresent.Domain
 {
 	public abstract class Candies : ICandies
 	{
-        public string nameValue;
+
 		public Candies(string name, int weight, string type)
 		{
             Name = name ?? throw new IncorrectValueException("ERROR: The value should not be NULL");
+            if (Name.Length > 225)
+            {
+                throw new ValueLengthException("ERROR: The value length should not be bigger than 225 symbols");
+            }
+
             Weight = weight > 0 ? weight : throw new IncorrectValueException("ERROR: The value can not be less then 0");
 			Type = type ?? throw new IncorrectValueException("ERROR: The value should not be NULL");
-		}
-		public string Name 
-        {
-            get { return nameValue; }
-            set { if (value.Length > 225)
-                    throw new ValueLengthException("the name cannot be more than 225 symbols");
-            } 
+            if (Type.Length > 225)
+            {
+                throw new ValueLengthException("ERROR: The value length should not be bigger than 225 symbols");
+            }
         }
+		public string Name { get; set; }
 		public int Weight { get; private set; }
 		public string Type { get; private set; }
 		public string Filling { get; set; }

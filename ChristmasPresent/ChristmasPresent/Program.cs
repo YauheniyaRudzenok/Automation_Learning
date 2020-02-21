@@ -43,8 +43,8 @@ namespace ChristmasPresent
             Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
 			List<Candies> sortedCandies = box1.SortCandies();
 
-			Console.WriteLine("Items sorted by Name:");
-			foreach (Candies item in sortedCandies)
+            Console.WriteLine("Items sorted by Name:");
+            foreach (Candies item in sortedCandies)
             {
                 Console.WriteLine(item.Name);
             }
