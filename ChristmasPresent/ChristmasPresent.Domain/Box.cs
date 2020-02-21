@@ -10,21 +10,13 @@ namespace ChristmasPresent.Domain
 
         public void AddCandy(Candies candyItem)
 		{
-            try
-            {
+ 
                 if (candyItem == null)
                 {
-                    throw new Exception("ERROR: The object is empty. Please specify candys parameters");
+                    throw new ArgumentNullException("ERROR: The object is empty. Please specify candy parameters");
                 }
-                else
-                {
-                    insideBox.Add(candyItem);
-                }
-            }
-            catch(Exception emptyItem)
-            {
-                Console.WriteLine(emptyItem.Message);
-            }
+
+            insideBox.Add(candyItem);
         }
 
 		public int DefineWeight()
@@ -108,22 +100,14 @@ namespace ChristmasPresent.Domain
 
         public void DeleteCandy(Candies candyItem)
         {
-            try
-            {
                 if (insideBox.Contains(candyItem))
                 {
                     insideBox.Remove(candyItem);
                 }
                 else
                 {
-                    throw new Exception("Item is absent in the box");
+                    throw new ArgumentException("ERROR: Item is absent in the box");
                 }
-            }
-            catch (Exception absentItem)
-            {
-                Console.WriteLine($"ERROR:{absentItem.Message}");
-            }
-
         }
     }
 }

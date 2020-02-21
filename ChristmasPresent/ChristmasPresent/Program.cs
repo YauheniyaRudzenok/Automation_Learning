@@ -14,32 +14,31 @@ namespace ChristmasPresent
 		{
             Box box1 = new Box();
             Caramel candy1 = new Caramel("Taddy", 56);
-
-			//ChocolateCandies candy2 = new ChocolateCandies("New Chocolade Explosure", 78);
-            try
-            {
-                ChocolateCandiesWithFilling candy3 =
+            ChocolateCandiesWithFilling candy3 =
                 new ChocolateCandiesWithFilling("Chocolate with berries", 90, "Berries jam");
-            }
-            catch (IncorrectValueException exception)
-            {
-                Console.WriteLine(exception.Message);
-            }
-            finally
-            {
-                ChocolateCandiesWithFilling candy3 =
-                new ChocolateCandiesWithFilling("Chocolate with berries", 90, "Berries jam");
-                box1.AddCandy(candy3);
-            }
+            ChocolateCandies candy2 = new ChocolateCandies("New Chocolade Explosure", 78);
+           
 
-			//LollyPops candy4 = new LollyPops("Chupa-chups", 15);
-            LollyPops candy5 = null;
+			LollyPops candy4 = new LollyPops("Chupa-chups", 15);
 
 			
 			box1.AddCandy(candy1);
-			//box1.AddCandy(candy2);
-           // box1.AddCandy(candy4);
-            box1.AddCandy(candy5);
+			box1.AddCandy(candy2);
+            box1.AddCandy(candy4);
+            try
+            {
+                LollyPops candy5 = null;
+                box1.AddCandy(candy5);
+                box1.DeleteCandy(candy3);
+            }
+            catch (ArgumentNullException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
+            catch (ArgumentException exception)
+            {
+                Console.WriteLine(exception.Message);
+            }
 
             Console.WriteLine($"The weight of the box is {box1.DefineWeight()}");
 			List<Candies> sortedCandies = box1.SortCandies();
@@ -62,7 +61,7 @@ namespace ChristmasPresent
             foreach (Candies item in extendedSearchResult)
             {
                 Console.WriteLine(item.Name);
-            }
+            };
         }
 	}
 }
