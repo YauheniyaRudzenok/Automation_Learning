@@ -21,6 +21,10 @@ namespace ChristmasPresent.Domain
 
 		public int DefineWeight()
 		{
+            if (insideBox.Count == 0)
+            {
+                throw new Exception("The box is empty. Please add some value before defining the weight");
+            }
             int boxWeight = 0;
 
             foreach (Candies item in insideBox)
@@ -36,12 +40,16 @@ namespace ChristmasPresent.Domain
             List<Candies> result = new List<Candies>();
             foreach (Candies item in insideBox)
 			{
-				if (item.Name == name || 
-					item.Type == type || 
-					item.Weight == weight)
-				{
+                if (item.Name == name ||
+                    item.Type == type ||
+                    item.Weight == weight)
+                {
                     result.Add(item);
-				}
+                }
+                if (result.Count==0) 
+                { 
+                    throw new ArgumentNullException ("No searched items are found in the box"); 
+                }
 			}
             return result;
         }
@@ -52,7 +60,7 @@ namespace ChristmasPresent.Domain
 			// Where();
 			if (string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(type) && weight == 0)
 			{
-				return result;
+                throw new NoResultException("Please input a search query.");
 			}
 
 			foreach (Candies item in insideBox)
@@ -95,11 +103,19 @@ namespace ChristmasPresent.Domain
 
         public List<Candies> SortCandies()
         {
+            if (insideBox.Count==0)
+            {
+                throw new Exception("ERROR: is it impossible to sort items in empty box");
+            }
             return insideBox.OrderBy(u => u.Name).ToList();
         }
 
         public void DeleteCandy(Candies candyItem)
         {
+                if (insideBox.Count == 0)
+                {
+                throw new Exception("It is impossible to remove item from the box. The box is empty");
+                }
                 if (insideBox.Contains(candyItem))
                 {
                     insideBox.Remove(candyItem);
